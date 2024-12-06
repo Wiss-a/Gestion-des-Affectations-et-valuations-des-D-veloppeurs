@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire</title>
+</head>
+<body>
+<form th:action="@{/actionFormAnnot}" method="post">
+    <label >ID</label>
+    <input type="text" name ="id" />
+    <label>Nom :</label>
+    <input type="text" name ="nom" />
+    <label>Prénom</label>
+    <input type="text" name ="prenom" />
+    <label>Email</label>
+    <input type="text" name ="email" />
+    <label>Password</label>
+    <input type="password" name ="password" />
+    <label for="competences">Compétences (séparées par des virgules):</label>
+    <input type="text" th:field="*{competences}" />
+    <br />
+    <input type="submit" />
+</form>
+</body>
+</html>

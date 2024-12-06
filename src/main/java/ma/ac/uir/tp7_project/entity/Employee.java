@@ -2,6 +2,8 @@ package ma.ac.uir.tp7_project.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="employee")
 public class Employee {
@@ -17,5 +19,7 @@ public class Employee {
     private String email;
     @Column(name = "password")
     private String password;
+    @ElementCollection
+    private List<String> competences;
 
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  >
+<meta charset="UTF-8">
+<title>User - FORM</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+<h3> List Employees  </h3>
+<!--<span th:text="${employees}" />-->
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Prénom</th>
+        <th>Nom</th>
+        <th>Update/Delete</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="theEmployee : ${employees}">
+        <td th:text="${theEmployee.id}">
+        <td th:text="${theEmployee.prenom}">
+        <td th:text="${theEmployee.nom}">
+        <td th:text="${developpeur.competences}">
+        <td >
+            <a th:href="@{/employees/loadFormUpdate(employeeId=${theEmployee.id})}" class="btn btn-info btn-sm">
+                Update
+            </a>
+            <a th:href="@{/employees/delete(employeeId=${theEmployee.id})}" class="btn btn-danger btn-sm">
+                Delete
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
