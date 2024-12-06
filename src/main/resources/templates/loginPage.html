@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="../static/css/loginPage.css">
+    <link rel="stylesheet" href="../static/css/output.css">
 </head>
 <body>
-<div class="login-container">
-    <div class="login-form">
-        <h2>Login</h2>
+<div class="flex font-ComfortaaX justify-center items-center absolute z-2 w-full h-full">
+    <div class="bg-[#007006] px-8 py-5 border-[3px] border-white rounded-lg shadow-md text-center w-72">
+        <h2 class="mb-[10px] text-[30px] text-white">Login</h2>
         <form action="#" method="POST">
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+            <div class="mb-[15px]">
+                <label class="text-white" for="email">Email</label>
+                <input placeholder="your email goes here" class="focus:outline-none w-full p-2 text-[15px] rounded border-[2px] placeholder-[#bdbdbd] bg-[#007006] text-white" autocomplete="off" type="email" id="email" name="email" required>
             </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+            <div class="mb-[15px]">
+                <label class="text-white" for="password">Password</label>
+                <input placeholder="your password goes here" class="focus:outline-none w-full p-2 text-[15px] border-[2px] border-white rounded bg-[#007006] text-white" type="password" id="password" name="password" required>
             </div>
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" class="w-full p-2 text-base bg-[#c98300] rounded cursor-pointer transition-colors duration-300 ease-in-out border-opacity-0 border-[2px] border-white hover:border-opacity-100 hover:text-[#007006] text-white">Login</button>
         </form>
     </div>
 </div>
