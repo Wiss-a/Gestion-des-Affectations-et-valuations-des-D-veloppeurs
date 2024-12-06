@@ -124,7 +124,7 @@
 </div>
 
 <script>
-    // Matrix effect script
+    // Binary Matrix effect script
     document.addEventListener("DOMContentLoaded", () => {
         const canvas = document.createElement('canvas');
         document.body.appendChild(canvas);
@@ -134,8 +134,8 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        const charArr = characters.split('');
+        const binary = '01';
+        const binaryArr = binary.split('');
         const fontSize = 14;
         const columns = canvas.width / fontSize;
         const drops = [];
@@ -152,7 +152,7 @@
             ctx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
-                const text = charArr[Math.floor(Math.random() * charArr.length)];
+                const text = binaryArr[Math.floor(Math.random() * binaryArr.length)];
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
