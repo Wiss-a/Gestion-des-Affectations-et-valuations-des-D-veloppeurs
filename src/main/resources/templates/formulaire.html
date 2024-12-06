@@ -1,25 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Formulaire</title>
+    <title>Formulaire d'inscription</title>
 </head>
 <body>
-<form th:action="@{/actionFormAnnot}" method="post">
-    <label >ID</label>
-    <input type="text" name ="id" />
-    <label>Nom :</label>
-    <input type="text" name ="nom" />
-    <label>Prénom</label>
-    <input type="text" name ="prenom" />
-    <label>Email</label>
-    <input type="text" name ="email" />
-    <label>Password</label>
-    <input type="password" name ="password" />
-    <label for="competences">Compétences (séparées par des virgules):</label>
-    <input type="text" th:field="*{competences}" />
+<h2>Formulaire d'inscription</h2>
+<form th:action="@{/actionFormAnnot}" th:object="${employee}" method="post">
+    <!-- Nom -->
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" th:field="*{nom}" required />
     <br />
-    <input type="submit" />
+
+    <!-- Prénom -->
+    <label for="prenom">Prénom:</label>
+    <input type="text" id="prenom" th:field="*{prenom}" required />
+    <br />
+
+    <!-- Email -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required />
+    <br />
+
+    <!-- Mot de passe -->
+    <label for="password">Mot de passe:</label>
+    <input type="password" id="password" th:field="*{password}" required />
+    <br />
+
+    <!-- Rôle (Liste déroulante) -->
+    <label for="role">Rôle:</label>
+    <select id="role" th:field="*{role}">
+        <option value="DEVELOPPEUR">Développeur</option>
+        <option value="CHEF_DE_PROJET">Chef de Projet</option>
+    </select>
+    <br />
+
+    <!-- Compétences (Liste déroulante) -->
+    <label for="competences">Compétences:</label>
+    <select id="competences" th:field="*{competences}">
+        <option value="JAVA">Java</option>
+        <option value="PYTHON">Python</option>
+        <option value="SPRING">Spring</option>
+        <option value="ANGULAR">Angular</option>
+        <option value="MYSQL">MySQL</option>
+    </select>
+    <br />
+
+    <!-- Bouton soumettre -->
+    <button type="submit">S'inscrire</button>
 </form>
 </body>
 </html>
