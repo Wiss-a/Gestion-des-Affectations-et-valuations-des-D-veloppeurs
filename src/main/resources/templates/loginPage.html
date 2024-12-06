@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/css/loginPage.css">
     <style>
         /* General Reset */
         * {
@@ -18,7 +17,7 @@
             font-family: Arial, sans-serif;
             height: 100vh;
             background-color: #000;
-            color: #0f0; /* Green text color like in hacking themes */
+            color: #0f0;
             overflow: hidden;
             position: relative;
         }
@@ -140,15 +139,25 @@
         const columns = canvas.width / fontSize;
         const drops = [];
 
+        // Prefill canvas with random binary numbers
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, canvas.width, canvas.height); // Black background
+        ctx.fillStyle = '#0f0'; // Green color for binary
+        ctx.font = `${fontSize}px monospace`;
+
         for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+            for (let y = 0; y < drops[i]; y++) {
+                const text = binaryArr[Math.floor(Math.random() * binaryArr.length)];
+                ctx.fillText(text, i * fontSize, y * fontSize);
+            }
         }
 
         function drawMatrix() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height); // Background fade effect
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#0f0'; // Green color for the matrix
+            ctx.fillStyle = '#0f0';
             ctx.font = `${fontSize}px monospace`;
 
             for (let i = 0; i < drops.length; i++) {
