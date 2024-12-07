@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "employees")
 public class Employee {
 
     @Id
@@ -12,12 +13,17 @@ public class Employee {
 
     private String name;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String password;
 
     private String role; // e.g., Project Manager, Developer
 
     @ElementCollection
+    @CollectionTable(name = "employee_skills", joinColumns = @JoinColumn(name = "employee_id"))
+    @Column(name = "skill")
     private List<String> skills; // List of skill names
 
     private int experience; // Experience in years
@@ -27,7 +33,12 @@ public class Employee {
     @Column(length = 1000)
     private String feedback;
 
-    @ManyToMany(mappedBy = "assignedDevelopers")
+    @ManyToMany
+    @JoinTable(
+            name = "employee_projects",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
     private List<Project> assignedProjects;
 
     // Getters and Setters
@@ -53,6 +64,14 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getRole() {

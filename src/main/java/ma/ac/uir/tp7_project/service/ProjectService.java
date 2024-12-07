@@ -1,19 +1,21 @@
 package ma.ac.uir.tp7_project.service;
 
-import ma.ac.uir.tp7_project.entity.Employee;
 import ma.ac.uir.tp7_project.entity.Project;
-
 import java.util.List;
 
 public interface ProjectService {
-    List<Project> findAllProject();
-    Project findProjectById(int theId);
 
-    Project findProjectById(Long theId);
+    Project createProject(Project project);
 
-    Project saveProject(Project theProject);
-    Project updateProject(Project theProject);
-    void deleteProjectById(int theId);
+    Project getProjectById(Long id);
 
-    void deleteProjectById(Long theId);
+    List<Project> getAllProjects();
+
+    Project updateProject(Long id, Project project);
+
+    void deleteProject(Long id);
+
+    List<Project> findProjectsBySkill(String skill);
+
+    List<Project> getProjectsByDeveloperId(Long developerId);
 }

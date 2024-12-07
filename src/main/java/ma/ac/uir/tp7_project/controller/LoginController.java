@@ -11,4 +11,9 @@ public class LoginController {
     public String home(Model model) {
         return "loginPage2"; // This will resolve to src/main/resources/templates/loginPage.html
     }
+
+    @GetMapping("/register")
+    public String register(Model model) {
+        return "registerPage"; // This will resolve to src/main/resources/templates/loginPage.html
+    }
 }

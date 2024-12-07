@@ -1,7 +1,8 @@
 package ma.ac.uir.tp7_project.service;
 
-import ma.ac.uir.tp7_project.dao.ProjectRepository;
 import ma.ac.uir.tp7_project.entity.Project;
+import ma.ac.uir.tp7_project.dao.ProjectRepository;
+import ma.ac.uir.tp7_project.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,54 +12,46 @@ import java.util.Optional;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
-    private final ProjectRepository projectRepository;
-
     @Autowired
-    public ProjectServiceImpl(ProjectRepository projectRepository) {
-        this.projectRepository = projectRepository;
+    private ProjectRepository projectRepository;
+
+    @Override
+    public Project createProject(Project project) {
+        return projectRepository.save(project);
     }
 
     @Override
-    public List<Project> findAllProject() {
+    public Project getProjectById(Long id) {
+        Optional<Project> project = projectRepository.findById(id);
+        return project.orElse(null);
+    }
+
+    @Override
+    public List<Project> getAllProjects() {
         return projectRepository.findAll();
     }
 
     @Override
-    public Project findProjectById(int theId) {
+    public Project updateProject(Long id, Project project) {
+        if (projectRepository.existsById(id)) {
+            project.setId(id);
+            return projectRepository.save(project);
+        }
         return null;
     }
 
     @Override
-    public void deleteProjectById(int theId) {
-
+    public void deleteProject(Long id) {
+        projectRepository.deleteById(id);
     }
 
     @Override
-    public Project findProjectById(Long theId) {
-        Optional<Project> result = projectRepository.findById(theId);
-
-        Project theProject = null;
-
-        if (result.isPresent()) {
-            theProject = result.get();
-        } else {
-            throw new RuntimeException("Project not found for id - " + theId);
-        }
-        return theProject;
+    public List<Project> findProjectsBySkill(String skill) {
+        return projectRepository.findByRequiredSkillsContaining(skill);
     }
 
     @Override
-    public Project saveProject(Project theProject) {
-        return projectRepository.save(theProject);
-    }
-
-    @Override
-    public Project updateProject(Project theProject) {
-        return projectRepository.save(theProject);
-    }
-
-    @Override
-    public void deleteProjectById(Long theId) {
-        projectRepository.deleteById(theId);
+    public List<Project> getProjectsByDeveloperId(Long developerId) {
+        return projectRepository.findByAssignedDevelopersId(developerId);
     }
 }

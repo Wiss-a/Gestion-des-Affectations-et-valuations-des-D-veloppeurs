@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "projects")
 public class Project {
 
     @Id
@@ -18,6 +19,8 @@ public class Project {
     private int estimatedDuration; // Duration in days
 
     @ElementCollection
+    @CollectionTable(name = "project_required_skills", joinColumns = @JoinColumn(name = "project_id"))
+    @Column(name = "skill")
     private List<String> requiredSkills; // List of skill names
 
     @ManyToMany
