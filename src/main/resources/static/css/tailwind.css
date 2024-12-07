@@ -6,3 +6,8 @@
     font-family: 'ComfortaaX';
     src: url('../fonts/ComfortaaX.ttf') format('truetype');
 }
+
+.no-select-drag {
+    user-select: none;
+    pointer-events: none;
+}
