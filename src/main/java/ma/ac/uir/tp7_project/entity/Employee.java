@@ -19,29 +19,23 @@ public class Employee {
     @Column(nullable = false)
     private String password;
 
-    private String role; // e.g., Project Manager, Developer
+    private String role;
 
     @ElementCollection
     @CollectionTable(name = "employee_skills", joinColumns = @JoinColumn(name = "employee_id"))
     @Column(name = "skill")
-    private List<String> skills; // List of skill names
+    private List<String> skills;
 
-    private int experience; // Experience in years
+    private int experience;
 
     private float performanceRating;
 
     @Column(length = 1000)
     private String feedback;
 
-    @ManyToMany
-    @JoinTable(
-            name = "employee_projects",
-            joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "project_id")
-    )
+    @ManyToMany(mappedBy = "assignedDevelopers")
     private List<Project> assignedProjects;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

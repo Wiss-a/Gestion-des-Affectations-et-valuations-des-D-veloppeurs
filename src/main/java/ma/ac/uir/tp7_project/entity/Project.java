@@ -16,12 +16,12 @@ public class Project {
     @Column(length = 1000)
     private String description;
 
-    private int estimatedDuration; // Duration in days
+    private int estimatedDuration;
 
     @ElementCollection
     @CollectionTable(name = "project_required_skills", joinColumns = @JoinColumn(name = "project_id"))
     @Column(name = "skill")
-    private List<String> requiredSkills; // List of skill names
+    private List<String> requiredSkills;
 
     @ManyToMany
     @JoinTable(
@@ -31,7 +31,6 @@ public class Project {
     )
     private List<Employee> assignedDevelopers;
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
