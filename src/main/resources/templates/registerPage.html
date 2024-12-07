@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration Page</title>
+    <script>
+        function checkInputs() {
+            var password1 = document.getElementById("password1").value;
+            var password2 = document.getElementById("password2").value;
+            var warningText = document.getElementById("warningText");
+
+            if (password1 !== password2) {
+                warningText.style.opacity = 1;
+            } else {
+                warningText.style.opacity = 0;
+            }
+        }
+    </script>
     <link rel="icon" href="../static/images/logo-white.svg" type="svg">
     <link th:href="@{/css/output.css}" rel="stylesheet">
+
 </head>
 <body>
     <div class="bg-white flex justify-center w-full relative">
@@ -42,8 +56,9 @@
                     <input
                             name="email"
                             class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200"
-                            type="text"
+                            type="email"
                             placeholder="your email here"
+                            required
                     >
                     <img class="w-6 h-auto absolute bg-[#EAA700] text-white right-2 top-1/2 transform -translate-y-1/2" alt="" th:src="@{/images/user.png}">
                 </div>
@@ -51,11 +66,13 @@
                     Password:
                 </label>
                 <div class="relative">
-                    <input
+                    <input  id="password1"
                             name="password"
                             class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200"
                             type="password"
+                            oninput="checkInputs()"
                             placeholder="your password here"
+                            required
                     >
                     <img class="w-6 h-auto absolute text-white bg-[#EAA700] right-2 top-1/2 transform -translate-y-1/2" alt="" th:src="@{/images/lock.png}">
                 </div>
@@ -63,15 +80,18 @@
                     Confirm Password:
                 </label>
                 <div class="relative">
-                    <input
+                    <input  id="password2"
                             name="password"
                             class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200"
                             type="password"
+                            oninput="checkInputs()"
                             placeholder="confirm your password"
+                            required
                     >
                     <img class="w-6 h-auto absolute text-white bg-[#EAA700] right-2 top-1/2 transform -translate-y-1/2" alt="" th:src="@{/images/lock.png}">
                 </div>
-                <div class="mt-5 flex justify-center">
+                <p class="font-ComfortaaX opacity-0 text-white text-center" id="warningText">Passwords must be match!</p>
+                <div class="mt-0 flex justify-center">
                     <button type="submit" class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">
                         REGISTER</button>
                 </div>
