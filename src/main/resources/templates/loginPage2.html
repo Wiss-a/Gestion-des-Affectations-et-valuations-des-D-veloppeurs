@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentication Page</title>
+    <link rel="icon" href="../static/images/logo-white.svg" type="svg">
+    <link th:href="@{/css/output.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-white flex justify-center w-full relative">
+        <!-- Navbar -->
+        <div class="relative bg-[#2A7800] w-[95vw] h-16 mx-auto my-4 rounded-[20px] flex items-center z-10">
+            <img th:src="@{/images/logo-white.svg}" alt="" class="absolute no-select-drag w-auto h-16 py-2 pl-4"/>
+            <h1 class="font-ComfortaaX no-select-drag m-auto text-[30px] desktop text-white">Authentication</h1>
+        </div>
+        <!-- Background Images -->
+        <div class="absolute justify-center items-center m-[20vh] z-0">
+            <ul class="no-select-drag z-0 flex flex-row justify-center items-center h-[70vh] w-auto opacity-30">
+                <li class="w-[30vw] h-auto p-5">
+                    <img th:src="@{/images/logo.svg}" alt="" />
+                </li>
+                <li class="w-[30vw] h-auto p-5">
+                    <img th:src="@{/images/logo.svg}" alt="" />
+                </li>
+                <li class="w-[30vw] h-auto p-5">
+                    <img th:src="@{/images/logo.svg}" alt="" />
+                </li>
+            </ul>
+        </div>
+        <!-- Login Panel -->
+        <div class="w-[400px] h-[400px] flex bg-[#EAA700] rounded-[25px] mt-32 z-10 p-8 absolute shadow-md">
+            <img
+                    class="no-select-drag h-[20%] w-[20%] mx-auto absolute top-2 left-1/2 transform -translate-x-1/2"
+                    th:src="@{/images/logo-white.svg}"
+                    alt=""
+            />
+            <form class="justify-center items-center absolute top-[20%] left-1/2 transform -translate-x-1/2">
+                <div>
+                    <label class="font-ComfortaaX text-white text-[18px]">
+                        Email:
+                    </label>
+                    <br>
+                    <div class="relative flex justify-end">
+                        <input
+                                name="email"
+                                class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200"
+                                type="text"
+                                placeholder="fname.lname@gmail.com"
+                        >
+                        <img class="w-6 h-auto absolute bg-[#EAA700] text-white right-2 top-1/2 transform -translate-y-1/2" alt="" th:src="@{/images/user.png}">
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <label class="font-ComfortaaX text-white text-[18px]">
+                        Password:
+                    </label>
+                    <div class="relative">
+                        <input
+                                name="password"
+                                class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200"
+                                type="password"
+                                placeholder="password here"
+                        >
+                        <img class="w-6 h-auto absolute text-white bg-[#EAA700] right-2 top-1/2 transform -translate-y-1/2" alt="" th:src="@{/images/lock.png}">
+                    </div>
+                </div>
+                <div class="mt-5 flex justify-center">
+                    <button type="submit" class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">
+                        LOG IN</button>
+                </div>
+            </form>
+            <div class="absolute left-1/2 transform -translate-x-1/2 mt-72 flex justify-center w-full">
+                <form th:action="@{/register}" method="GET">
+                    <button class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">
+                        REGISTER
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="fixed bottom-0 mb-3 text-gray-300 font-ComfortaaX text-lg">
+            <p>Basri - Maizi - Laqsir @ 2024</p>
+        </footer>
+    </div>
+</body>
+</html>
