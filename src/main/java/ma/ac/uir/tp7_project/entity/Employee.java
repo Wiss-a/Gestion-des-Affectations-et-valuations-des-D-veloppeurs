@@ -1,62 +1,50 @@
 package ma.ac.uir.tp7_project.entity;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
-@Table(name="employee")
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
-    @Column(name="nom")
-    private String nom;
-    @Column(name="prenom")
-    private String prenom;
-    @Column(name = "email")
+    private Long id;
+
+    private String name;
+
+    @Column(unique = true)
     private String email;
-    @Column(name = "password")
-    private String password;
-    @Column(name="role")
-    private String role;
+
+    private String role; // e.g., Project Manager, Developer
 
     @ElementCollection
-    @CollectionTable(name = "competences", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "competence")
-    private List<String> competences;
-    @ManyToMany
-    @JoinTable(
-            name = "projet_user",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "idprojet")
-    )
-    private List<Project> projets;
+    private List<String> skills; // List of skill names
 
+    private int experience; // Experience in years
 
-    public int getId() {
+    private float performanceRating;
+
+    @Column(length = 1000)
+    private String feedback;
+
+    @ManyToMany(mappedBy = "assignedDevelopers")
+    private List<Project> assignedProjects;
+
+    // Getters and Setters
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -67,14 +55,6 @@ public class Employee {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getRole() {
         return role;
     }
@@ -83,23 +63,58 @@ public class Employee {
         this.role = role;
     }
 
-    public List<String> getCompetences() {
-        return competences;
+    public List<String> getSkills() {
+        return skills;
     }
 
-    public void setCompetences(List<String> competences) {
-        this.competences = competences;
+    public void setSkills(List<String> skills) {
+        this.skills = skills;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public float getPerformanceRating() {
+        return performanceRating;
+    }
+
+    public void setPerformanceRating(float performanceRating) {
+        this.performanceRating = performanceRating;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
+    public List<Project> getAssignedProjects() {
+        return assignedProjects;
+    }
+
+    public void setAssignedProjects(List<Project> assignedProjects) {
+        this.assignedProjects = assignedProjects;
     }
 
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", competences=" + competences +
+                ", role='" + role + '\'' +
+                ", skills=" + skills +
+                ", experience=" + experience +
+                ", performanceRating=" + performanceRating +
+                ", feedback='" + feedback + '\'' +
+                ", assignedProjects=" + assignedProjects +
                 '}';
     }
 }

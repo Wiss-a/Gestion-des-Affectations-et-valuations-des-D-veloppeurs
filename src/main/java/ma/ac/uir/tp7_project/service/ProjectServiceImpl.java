@@ -4,12 +4,15 @@ import ma.ac.uir.tp7_project.dao.ProjectRepository;
 import ma.ac.uir.tp7_project.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
-    private ProjectRepository projectRepository;
+
+    private final ProjectRepository projectRepository;
+
     @Autowired
     public ProjectServiceImpl(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
@@ -22,15 +25,24 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Project findProjectById(int theId) {
+        return null;
+    }
+
+    @Override
+    public void deleteProjectById(int theId) {
+
+    }
+
+    @Override
+    public Project findProjectById(Long theId) {
         Optional<Project> result = projectRepository.findById(theId);
 
         Project theProject = null;
 
         if (result.isPresent()) {
             theProject = result.get();
-        }
-        else {
-            throw new RuntimeException("!find Project id - " + theId);
+        } else {
+            throw new RuntimeException("Project not found for id - " + theId);
         }
         return theProject;
     }
@@ -46,7 +58,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void deleteProjectById(int theId) {
-    projectRepository.deleteById(theId);
+    public void deleteProjectById(Long theId) {
+        projectRepository.deleteById(theId);
     }
 }

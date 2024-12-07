@@ -1,53 +1,48 @@
 package ma.ac.uir.tp7_project.entity;
 
 import jakarta.persistence.*;
-
 import java.util.List;
+
 @Entity
 public class Project {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idprojet;
-    @Column(name = "titre")
-    private String titre;
-    @Column(name = "description")
+    private Long id;
+
+    private String title;
+
+    @Column(length = 1000)
     private String description;
-    @Column(name = "duree")
-    private int dureeEstimee; // En jours
+
+    private int estimatedDuration; // Duration in days
 
     @ElementCollection
-    @CollectionTable(name = "projet_competences", joinColumns = @JoinColumn(name = "idprojet"))
-    @Column(name = "competence_requise")
-    private List<String> competencesRequises;
+    private List<String> requiredSkills; // List of skill names
 
-    @ManyToMany(mappedBy = "projects")
-    private List<Employee> employees;
-    public Project(String titre, String description, int dureeEstimee, List<String> competencesRequises) {
-        this.titre = titre;
-        this.description = description;
-        this.dureeEstimee = dureeEstimee;
-        this.competencesRequises = competencesRequises;
+    @ManyToMany
+    @JoinTable(
+            name = "project_employee",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id")
+    )
+    private List<Employee> assignedDevelopers;
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
     }
 
-    public Project() {
-
+    public void setId(Long id) {
+        this.id = id;
     }
 
-
-    public int getIdprojet() {
-        return idprojet;
+    public String getTitle() {
+        return title;
     }
 
-    public void setIdprojet(int idprojet) {
-        this.idprojet = idprojet;
-    }
-
-    public String getTitre() {
-        return titre;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -58,40 +53,39 @@ public class Project {
         this.description = description;
     }
 
-    public int getDureeEstimee() {
-        return dureeEstimee;
+    public int getEstimatedDuration() {
+        return estimatedDuration;
     }
 
-    public void setDureeEstimee(int dureeEstimee) {
-        this.dureeEstimee = dureeEstimee;
+    public void setEstimatedDuration(int estimatedDuration) {
+        this.estimatedDuration = estimatedDuration;
     }
 
-    public List<String> getCompetencesRequises() {
-        return competencesRequises;
+    public List<String> getRequiredSkills() {
+        return requiredSkills;
     }
 
-    public void setCompetencesRequises(List<String> competencesRequises) {
-        this.competencesRequises = competencesRequises;
+    public void setRequiredSkills(List<String> requiredSkills) {
+        this.requiredSkills = requiredSkills;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public List<Employee> getAssignedDevelopers() {
+        return assignedDevelopers;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setAssignedDevelopers(List<Employee> assignedDevelopers) {
+        this.assignedDevelopers = assignedDevelopers;
     }
 
     @Override
     public String toString() {
         return "Project{" +
-                "idprojet=" + idprojet +
-                ", titre='" + titre + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", dureeEstimee=" + dureeEstimee +
-                ", competencesRequises=" + competencesRequises +
-                ", employees=" + employees +
+                ", estimatedDuration=" + estimatedDuration +
+                ", requiredSkills=" + requiredSkills +
+                ", assignedDevelopers=" + assignedDevelopers +
                 '}';
     }
 }
-
