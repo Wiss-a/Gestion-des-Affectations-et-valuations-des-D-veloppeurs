@@ -570,6 +570,10 @@ video {
   bottom: 0px;
 }
 
+.bottom-\[14px\] {
+  bottom: 14px;
+}
+
 .left-1\/2 {
   left: 50%;
 }
@@ -666,6 +670,10 @@ video {
 
 .h-\[400px\] {
   height: 400px;
+}
+
+.h-\[450px\] {
+  height: 450px;
 }
 
 .h-\[70vh\] {
