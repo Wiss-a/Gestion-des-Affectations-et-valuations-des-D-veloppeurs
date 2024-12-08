@@ -9,7 +9,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        return "loginPage2"; // This will resolve to src/main/resources/templates/loginPage.html
+        return "test"; // This will resolve to src/main/resources/templates/loginPage.html
     }
 
     @GetMapping("/register")
