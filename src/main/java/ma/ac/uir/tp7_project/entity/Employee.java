@@ -36,6 +36,7 @@ public class Employee {
     @ManyToMany(mappedBy = "assignedDevelopers")
     private List<Project> assignedProjects;
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
