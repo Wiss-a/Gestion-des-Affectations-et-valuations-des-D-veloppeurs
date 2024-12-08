@@ -3,110 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration Page</title>
+    <link rel="icon" href="../static/images/logo-white.svg" type="image/svg+xml">
+    <link th:href="@{/css/output.css}" rel="stylesheet">
     <script>
         function checkInputs() {
-            var password1 = document.getElementById("password1").value;
-            var password2 = document.getElementById("password2").value;
-            var warningText = document.getElementById("warningText");
+            let password1 = document.getElementById("password1").value;
+            let password2 = document.getElementById("password2").value;
+            let warningText = document.getElementById("warningText");
 
-            if (password1 !== password2) {
-                warningText.style.opacity = 1;
-            } else {
-                warningText.style.opacity = 0;
-            }
+            warningText.style.opacity = password1 !== password2 ? 1 : 0;
         }
     </script>
-    <link rel="icon" href="../static/images/logo-white.svg" type="svg">
-    <link th:href="@{/css/output.css}" rel="stylesheet">
-
+    <style>
+        .custom-radio {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s;
+        }
+        .custom-radio:checked {
+            background-color: #EAA700;
+        }
+        .custom-radio:checked::before {
+            content: '';
+            display: block;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background-color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
-<body>
-    <div class="bg-white flex justify-center w-full relative">
-        <!-- Navbar -->
-        <div class="relative bg-[#2A7800] w-[95vw] h-16 mx-auto my-4 rounded-[20px] flex items-center z-10">
-            <img th:src="@{/images/logo-white.svg}" alt="" class="absolute no-select-drag w-auto h-16 py-2 pl-4"/>
-            <h1 class="font-ComfortaaX no-select-drag m-auto text-[30px] desktop text-white">Registration</h1>
+<body class="bg-white flex justify-center w-full relative min-h-screen">
+<!-- Navbar -->
+<div class="relative bg-[#2A7800] w-[95vw] h-16 mx-auto my-4 rounded-[20px] flex items-center z-10">
+    <img th:src="@{/images/logo-white.svg}" alt="Logo" class="absolute no-select-drag w-auto h-16 py-2 pl-4"/>
+    <h1 class="font-ComfortaaX no-select-drag m-auto text-[30px] desktop text-white">Registration</h1>
+</div>
+<!-- Background Images -->
+<div class="absolute flex justify-center items-center m-[20vh] z-0">
+    <ul class="no-select-drag z-0 flex flex-row justify-center items-center h-[70vh] w-auto opacity-30">
+        <li class="w-[30vw] h-auto p-5">
+            <img th:src="@{/images/logo.svg}" alt="Background Logo" />
+        </li>
+        <li class="w-[30vw] h-auto p-5">
+            <img th:src="@{/images/logo.svg}" alt="Background Logo" />
+        </li>
+        <li class="w-[30vw] h-auto p-5">
+            <img th:src="@{/images/logo.svg}" alt="Background Logo" />
+        </li>
+    </ul>
+</div>
+<!-- Registration Form -->
+<div class="flex mt-32 p-8 w-[400px] h-[450px] bg-[#EAA700] rounded-[25px] z-10 absolute shadow-md">
+    <img class="no-select-drag h-[20%] w-[20%] mx-auto absolute top-2 left-1/2 transform -translate-x-1/2" th:src="@{/images/logo-white.svg}" alt="Logo"/>
+    <form class="justify-center items-center absolute top-[20%] left-1/2 transform -translate-x-1/2">
+        <div class="mb-3">
+            <label class="font-ComfortaaX text-white text-[18px]" for="email">Email:</label>
+            <div class="relative flex justify-end">
+                <input id="email" name="email" class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200" type="email" placeholder="your email here" required>
+                <img class="w-6 h-auto absolute bg-[#EAA700] text-white right-2 top-1/2 transform -translate-y-1/2" alt="User Icon" th:src="@{/images/user.png}">
+            </div>
         </div>
-        <!-- Background Images -->
-        <div class="absolute justify-center items-center m-[20vh] z-0">
-            <ul class="no-select-drag z-0 flex flex-row justify-center items-center h-[70vh] w-auto opacity-30">
-                <li class="w-[30vw] h-auto p-5">
-                    <img th:src="@{/images/logo.svg}" alt="" />
+        <div class="mb-3">
+            <label class="font-ComfortaaX text-white text-[18px]" for="password1">Password:</label>
+            <div class="relative flex justify-end">
+                <input id="password1" name="password" class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200" type="password" oninput="checkInputs()" placeholder="your password here" required>
+                <img class="w-6 h-auto absolute text-white bg-[#EAA700] right-2 top-1/2 transform -translate-y-1/2" alt="Lock Icon" th:src="@{/images/lock.png}">
+            </div>
+        </div>
+        <div>
+            <label class="font-ComfortaaX text-white text-[18px]" for="password2">Confirm Password:</label>
+            <div class="relative flex justify-end">
+                <input id="password2" name="password" class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200" type="password" oninput="checkInputs()" placeholder="confirm your password" required>
+                <img class="w-6 h-auto absolute text-white bg-[#EAA700] right-2 top-1/2 transform -translate-y-1/2" alt="Lock Icon" th:src="@{/images/lock.png}">
+            </div>
+        </div>
+        <p class="font-ComfortaaX opacity-0 text-white text-center" id="warningText">Passwords must match!</p>
+        <div class="flex items-center justify-center">
+            <ul class="flex flex-row">
+                <li class="pr-9 flex items-center">
+                    <input class="custom-radio" type="radio" id="boss" name="role" value="boss">
+                    <label for="boss" class="pl-2 text-white">Boss</label>
                 </li>
-                <li class="w-[30vw] h-auto p-5">
-                    <img th:src="@{/images/logo.svg}" alt="" />
-                </li>
-                <li class="w-[30vw] h-auto p-5">
-                    <img th:src="@{/images/logo.svg}" alt="" />
+                <li class="flex items-center">
+                    <input class="custom-radio pr-4" type="radio" id="employee" name="role" value="employee">
+                    <label for="employee" class="pl-2 text-white">Employee</label>
                 </li>
             </ul>
         </div>
-        <div class="w-[400px] h-[450px] flex bg-[#EAA700] rounded-[25px] mt-32 z-10 p-8 absolute shadow-md">
-            <img
-                    class="no-select-drag h-[20%] w-[20%] mx-auto absolute top-2 left-1/2 transform -translate-x-1/2"
-                    th:src="@{/images/logo-white.svg}"
-                    alt=""
-            />
-            <form class="justify-center items-center absolute top-[20%] left-1/2 transform -translate-x-1/2">
-                <label class="font-ComfortaaX text-white text-[18px]">
-                    Email:
-                </label>
-                <br>
-                <div class="relative flex justify-end">
-                    <input
-                            name="email"
-                            class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200"
-                            type="email"
-                            placeholder="your email here"
-                            required
-                    >
-                    <img class="w-6 h-auto absolute bg-[#EAA700] text-white right-2 top-1/2 transform -translate-y-1/2" alt="" th:src="@{/images/user.png}">
-                </div>
-                <label class="font-ComfortaaX text-white text-[18px]">
-                    Password:
-                </label>
-                <div class="relative">
-                    <input  id="password1"
-                            name="password"
-                            class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200"
-                            type="password"
-                            oninput="checkInputs()"
-                            placeholder="your password here"
-                            required
-                    >
-                    <img class="w-6 h-auto absolute text-white bg-[#EAA700] right-2 top-1/2 transform -translate-y-1/2" alt="" th:src="@{/images/lock.png}">
-                </div>
-                <label class="font-ComfortaaX text-white text-[18px]">
-                    Confirm Password:
-                </label>
-                <div class="relative">
-                    <input  id="password2"
-                            name="password"
-                            class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200"
-                            type="password"
-                            oninput="checkInputs()"
-                            placeholder="confirm your password"
-                            required
-                    >
-                    <img class="w-6 h-auto absolute text-white bg-[#EAA700] right-2 top-1/2 transform -translate-y-1/2" alt="" th:src="@{/images/lock.png}">
-                </div>
-                <p class="font-ComfortaaX opacity-0 text-white text-center" id="warningText">Passwords must be match!</p>
-                <div class="mt-0 flex justify-center">
-                    <button type="submit" class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">
-                        REGISTER</button>
-                </div>
-            </form>
-            <div class="absolute left-1/2 transform -translate-x-1/2 bottom-[14px] flex justify-center w-full">
-                <form th:action="@{/}" method="GET">
-                    <button class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">
-                        BACK TO LOGIN
-                    </button>
-                </form>
-            </div>
+        <div class="mt-2">
+            <button type="submit" class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">REGISTER</button>
         </div>
-        <footer class="fixed bottom-0 mb-3 text-gray-300 font-ComfortaaX text-lg">
-            <p>Basri - Maizi - Laqsir @ 2024</p>
-        </footer>
-    </div>
+    </form>
+</div>
+<footer class="fixed bottom-0 mb-3 text-gray-300 font-ComfortaaX text-lg">
+    <p>Basri - Maizi - Laqsir @ 2024</p>
+</footer>
 </body>
 </html>

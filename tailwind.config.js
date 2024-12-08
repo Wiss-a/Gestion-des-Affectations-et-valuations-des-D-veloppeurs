@@ -9,6 +9,10 @@ module.exports = {
       fontFamily: {
         ComfortaaX: ['ComfortaaX', 'sans-serif'],
       },
+      flexBasis: {
+        '45': '45%',
+        '100': '100%',
+      },
     },
   },
   plugins: [],
