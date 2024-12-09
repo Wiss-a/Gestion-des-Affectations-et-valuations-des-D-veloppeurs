@@ -20,7 +20,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/", "/register", "/css/**", "/js/**", "/images/**", "/fonts/**").permitAll() // Allow access to the root URL and other specified paths
+                                .requestMatchers("/", "/register", "employeeDashboard", "/css/**", "/js/**", "/images/**", "/fonts/**").permitAll() // Allow access to the root URL and other specified paths
                                 .anyRequest().authenticated() // Require authentication for any other request
                 )
                 .formLogin(formLogin ->

@@ -72,7 +72,7 @@
     </div>
     <!-- Registration Form -->
     <div class="flex mt-32 p-8 w-[400px] h-[450px] bg-[#EAA700] rounded-[25px] z-10 absolute shadow-md">
-        <form class="justify-center items-center absolute top-5 left-1/2 transform -translate-x-1/2" method="POST">
+        <form th:action="@{/employeeDashboard}" class="justify-center items-center absolute top-5 left-1/2 transform -translate-x-1/2" method="POST">
             <div class="mb-3">
                 <label class="font-ComfortaaX text-white text-[18px]" for="email">Email:</label>
                 <div class="relative flex justify-end">
@@ -90,7 +90,7 @@
             <div>
                 <label class="font-ComfortaaX text-white text-[18px]" for="password2">Confirm Password:</label>
                 <div class="relative flex justify-end">
-                    <input id="password2" name="password" class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200" type="password" oninput="checkInputs()" placeholder="confirm your password" required>
+                    <input id="password2" class="outline-[#a87801] font-ComfortaaX p-2 w-[320px] rounded-[10px] border-[3px] border-white bg-[#EAA700] text-white placeholder-gray-200" type="password" oninput="checkInputs()" placeholder="confirm your password" required>
                     <img class="w-6 h-auto absolute text-white bg-[#EAA700] right-2 top-1/2 transform -translate-y-1/2" alt="Lock Icon" th:src="@{/images/lock.png}">
                 </div>
             </div>
@@ -108,7 +108,7 @@
                 </ul>
             </div>
             <div class="mt-2">
-                <button disabled th:action="@{/edashboard}" id="confirmRegisterBtn" type="submit" class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">REGISTER</button>
+                <button disabled id="confirmRegisterBtn" type="submit" class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">REGISTER</button>
             </div>
         </form>
         <div class="absolute bottom-[30px] left-1/2 transform -translate-x-1/2">
