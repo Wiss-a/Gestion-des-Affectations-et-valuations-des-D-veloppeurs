@@ -6,13 +6,12 @@
     <link rel="icon" href="../static/images/logo-white.svg" type="image/svg+xml">
     <link th:href="@{/css/output.css}" rel="stylesheet">
     <script>
-
         function checkInputs() {
             const password1 = document.getElementById("password1").value;
             const password2 = document.getElementById("password2").value;
             const warningText = document.getElementById("warningText");
 
-            warningText.style.opacity = password1 !== password2 ? 1 : 0;
+            warningText.style.opacity = password1 !== password2 ? '1' : '0';
         }
         function enableSubmitBtn() {
             const confirmRegisterBtn = document.getElementById("confirmRegisterBtn");
@@ -98,11 +97,11 @@
             <div class="flex items-center justify-center">
                 <ul class="flex flex-row">
                     <li class="pr-9 flex items-center">
-                        <input onclick="enableSubmitBtn()" class="custom-radio" type="radio" id="boss" name="role" value="boss">
+                        <input required onclick="enableSubmitBtn()" class="custom-radio" type="radio" id="boss" name="role" value="boss">
                         <label for="boss" class="pl-2 text-white">Boss</label>
                     </li>
                     <li class="flex items-center">
-                        <input onclick="enableSubmitBtn()" class="custom-radio pr-4" type="radio" id="employee" name="role" value="employee">
+                        <input required onclick="enableSubmitBtn()" class="custom-radio pr-4" type="radio" id="employee" name="role" value="employee">
                         <label for="employee" class="pl-2 text-white">Employee</label>
                     </li>
                 </ul>
@@ -112,7 +111,7 @@
             </div>
         </form>
         <div class="absolute bottom-[30px] left-1/2 transform -translate-x-1/2">
-            <form th:action="@{/}" method="GET">
+            <form action="" method="GET">
                 <button type="submit" class="font-ComfortaaX font-[700] hover:border-[#a87801] hover:text-[#a87801] border-[3px] border-white w-[320px] text-[#EAA700] px-10 py-2 bg-white rounded-[10px] shadow-md transition duration-300">BACK TO LOGIN</button>
             </form>
         </div>

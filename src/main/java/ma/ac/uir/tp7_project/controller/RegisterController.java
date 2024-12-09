@@ -2,7 +2,7 @@ package ma.ac.uir.tp7_project.controller;
 
 import ma.ac.uir.tp7_project.entity.Employee;
 import ma.ac.uir.tp7_project.dao.EmployeeRepository;
-import ma.ac.uir.tp7_project.service.EmployeeService;
+import ma.ac.uir.tp7_project.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class RegisterController {
 
     @Autowired
-    private EmployeeService employeeService;
-    private EmployeeRepository employeeRepository;
+    private RegisterService registerService;
 
     @GetMapping("/login")
     public String login(Model model) {
@@ -29,8 +28,14 @@ public class RegisterController {
     }
 
     @PostMapping("/employeeDashboard")
-    public String registerUser(@ModelAttribute Employee employee, Model model) {
-        employeeService.saveEmployee(employee);
+    public String registerEmployee(@ModelAttribute Employee employee, Model model) {
+        registerService.saveEmployee(employee);
         return "employeeDashboard";
+    }
+
+    @PostMapping("/bossDashboard")
+    public String registerBoss(@ModelAttribute Employee employee, Model model) {
+        registerService.saveEmployee(employee);
+        return "bossDashboard";
     }
 }

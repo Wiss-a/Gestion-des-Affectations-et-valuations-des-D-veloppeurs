@@ -16,7 +16,7 @@ public class RegisterServiceImpl implements RegisterService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void saveUser(Employee employee) {
+    public void saveEmployee(Employee employee) {
         employee.setPassword(bCryptPasswordEncoder.encode(employee.getPassword()));
         employeeRepository.save(employee);
     }

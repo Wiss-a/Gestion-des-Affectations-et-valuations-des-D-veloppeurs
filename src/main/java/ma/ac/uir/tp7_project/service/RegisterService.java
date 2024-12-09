@@ -4,5 +4,5 @@ import ma.ac.uir.tp7_project.entity.Employee;
 
 public interface RegisterService {
 
-    void saveUser(Employee employee);
+    void saveEmployee(Employee employee);
 }
