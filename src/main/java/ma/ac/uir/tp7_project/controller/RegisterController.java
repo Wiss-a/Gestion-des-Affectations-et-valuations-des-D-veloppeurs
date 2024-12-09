@@ -1,5 +1,6 @@
 package ma.ac.uir.tp7_project.controller;
 
+import jakarta.servlet.http.HttpSession;
 import ma.ac.uir.tp7_project.entity.Employee;
 import ma.ac.uir.tp7_project.dao.EmployeeRepository;
 import ma.ac.uir.tp7_project.service.RegisterService;
@@ -28,8 +29,10 @@ public class RegisterController {
     }
 
     @PostMapping("/employeeDashboard")
-    public String registerEmployee(@ModelAttribute Employee employee, Model model) {
+    public String registerEmployee(@ModelAttribute Employee employee, Model model, HttpSession session) {
         registerService.saveEmployee(employee);
+        Employee user = (Employee) session.getAttribute("employee");
+        model.addAttribute("employee", employee);
         return "employeeDashboard";
     }
 
